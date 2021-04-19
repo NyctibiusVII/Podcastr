@@ -9,10 +9,10 @@
 <p align="center">
     <img alt="Plataforma" src="https://img.shields.io/static/v1?label=Plataforma&message=Mobile/PC&color=04d361&labelColor=8257e5">
     <a aria-label="Completado" href="https://nextlevelweek.com/episodios/react/5/edicao/5">
-        <img alt="Podcastr" src="https://img.shields.io/badge/Podcastr-NLW 5.0-04d361?logo=data:image/png;base64,   iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAALVBMVEVHcExxWsF0XMJzXMJxWcFsUsD/// 9jRrzY0u6Xh9Gsn9n39fyMecy0qd2bjNJWBT0WAAAABHRSTlMA2Do606wF2QAAAGlJREFUGJVdj1cWwCAIBLEsRU3uf9xobDH8+GZwUYi8i6ucJwrxKE +7D0G9Q4vlYqtmCSjndr4CgCgzlyFgfKfKCVO0LrPKjmiqMxGXkJwNnXskqWG+1oSM+BSwD8f29YLNjvx/OQrn+g99oQSoNmt3PgAAAABJRU5ErkJggg==&labelColor=8257e5"></img>
+        <img alt="Podcastr" src="https://img.shields.io/badge/Podcastr-NLW 5.0-04d361?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAALVBMVEVHcExxWsF0XMJzXMJxWcFsUsD///9jRrzY0u6Xh9Gsn9n39fyMecy0qd2bjNJWBT0WAAAABHRSTlMA2Do606wF2QAAAGlJREFUGJVdj1cWwCAIBLEsRU3uf9xobDH8+GZwUYi8i6ucJwrxKE+7D0G9Q4vlYqtmCSjndr4CgCgzlyFgfKfKCVO0LrPKjmiqMxGXkJwNnXskqWG+1oSM+BSwD8f29YLNjvx/OQrn+g99oQSoNmt3PgAAAABJRU5ErkJggg==&labelColor=8257e5"></img>
     </a>
     <img alt="Tamanho do repositório" src="https://img.shields.io/github/repo-size/NyctibiusVII/Podcastr?color=04d361&labelColor=8257e5">
-    <a href="https://github.com/NyctibiusVII/Podcastr/blob/master/LICENSE">
+    <a href="https://github.com/NyctibiusVII/Podcastr/blob/main/LICENSE">
         <img alt="Licença" src="https://img.shields.io/static/v1?label=License&message=MIT&color=04d361&labelColor=8257e5">
     </a>
     <a href="https://picpay.me/Matheus_nyctibius_vii">
@@ -138,7 +138,7 @@ Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://disc
 | Dia 5 | # |
 
 ## Licença ⚖️
-Este projeto está sob a licença do MIT. Veja o arquivo [LICENSE](https://github.com/NyctibiusVII/Podcastr/blob/master/LICENSE) para mais detalhes.
+Este projeto está sob a licença do MIT. Veja o arquivo [LICENSE](https://github.com/NyctibiusVII/Podcastr/blob/main/LICENSE) para mais detalhes.
 
 ## Contato ✉️
 | <img src="https://user-images.githubusercontent.com/52816125/90341686-05b68880-dfd8-11ea-969c-70c9ce9d0278.jpg" width=100><br><sub><a href="https://www.instagram.com/nyctibius_vii/?hl=pt-br">@MatheusVidigal🦊</a></sub> |
