@@ -50,7 +50,7 @@ Projeto desenvolvido para gerenciar seus podcasts. Projeto realizado na Next Lev
 ## Tecnologias 🚀
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Html | 5](https://pt.wikipedia.org/wiki/HTML)
-- [Css | 3](https://pt.wikipedia.org/wiki/Cascading_Style_Sheets)
+- [Sass | ^1.32.11](https://sass-lang.com/)
 - [Typescript | ^4.2.4](https://www.typescriptlang.org/)
 - [ReactJS | ^17.0.2](https://pt-br.reactjs.org/)
 - [NextJS | ^10.1.3](https://nextjs.org/)
@@ -94,14 +94,17 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ```json
     "dependencies": {
+        "date-fns": "^2.21.1",
         "next": "10.1.3",
         "react": "17.0.2",
-        "react-dom": "17.0.2"
+        "react-dom": "17.0.2",
+        "sass": "^1.32.11"
     },
     "devDependencies": {
         "@types/node": "^14.14.41",
         "@types/react": "^17.0.3",
         "@types/react-dom": "^17.0.3",
+        "json-server": "^0.16.3",
         "typescript": "^4.2.4"
     }
     //Ex: $ npm install @types/_____ -D
@@ -129,10 +132,10 @@ Para construir essa aplicação tive a ajuda do professor **Diego Fernandes** da
 Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://discord.gg/YxU7fJT)
 
 ### Hashtags \#
-| Dias  | Hashtags            |
-|-------|---------------------|
-| Dia 1 | #MissaoEspacial     |
-| Dia 2 | # |
+| Dias  | Hashtags               |
+|-------|------------------------|
+| Dia 1 | #MissaoEspacial        |
+| Dia 2 | #EmBuscaDoPróximoNível |
 | Dia 3 | # |
 | Dia 4 | # |
 | Dia 5 | # |

@@ -1,0 +1,27 @@
+.container {
+    height: 6.5rem;
+
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+
+    padding: 2rem 4rem;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    p {
+        border-left: 1px solid var(--line);
+
+        padding: 0.25rem 0 0.25rem 2rem;
+
+        margin-left: 2rem;
+    }
+
+    span {
+        text-transform: capitalize;
+
+        margin-left: auto;
+    }
+}
