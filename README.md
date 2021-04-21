@@ -94,6 +94,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ```json
     "dependencies": {
+        "axios": "^0.21.1",
         "date-fns": "^2.21.1",
         "next": "10.1.3",
         "react": "17.0.2",
@@ -136,7 +137,7 @@ Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://disc
 |-------|------------------------|
 | Dia 1 | #MissaoEspacial        |
 | Dia 2 | #EmBuscaDoPróximoNível |
-| Dia 3 | # |
+| Dia 3 | #Astronautas           |
 | Dia 4 | # |
 | Dia 5 | # |
 

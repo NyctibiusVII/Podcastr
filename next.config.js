@@ -11,7 +11,7 @@ module.exports = {
         },
     },
     images: {
-        domains: ['github.com'],
+        domains: ['storage.googleapis.com'],
     },
     env: {
         CREATED_BY: 'NyctibiusVII',

@@ -3,12 +3,12 @@ import styles from '../styles/components/Player.module.scss'
 
 export function Player() {
     const imgSize = 32
-    const playingLoader      = () => `./icons/playing.svg`
-    const shuffleLoader      = () => `./icons/shuffle.svg`
-    const playPreviousLoader = () => `./icons/play-previous.svg`
-    const playLoader         = () => `./icons/play.svg`
-    const playNextLoader     = () => `./icons/play-next.svg`
-    const repeatLoader       = () => `./icons/repeat.svg`
+    const playingLoader      = () => `/icons/playing.svg`
+    const shuffleLoader      = () => `/icons/shuffle.svg`
+    const playPreviousLoader = () => `/icons/play-previous.svg`
+    const playLoader         = () => `/icons/play.svg`
+    const playNextLoader     = () => `/icons/play-next.svg`
+    const repeatLoader       = () => `/icons/repeat.svg`
 
     return(
         <div className={styles.container}>

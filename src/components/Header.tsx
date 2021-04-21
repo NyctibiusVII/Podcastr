@@ -7,7 +7,7 @@ import styles from '../styles/components/Header.module.scss'
 export function Header() {
     const currentDate = format(new Date(), 'EEEEEE, d, MMMM', { locale: ptBR })
 
-    const logoLoader = () => `./logo.svg`
+    const logoLoader = () => `/logo.svg`
 
     return(
         <header className={styles.container}>
@@ -38,7 +38,7 @@ export function Header() {
                 width={163}
                 height={40}
             />
-            <p>Omelhor para você ouvir, sempre</p>
+            <p>O melhor para você ouvir, sempre</p>
             <span>{currentDate}</span>
         </header>
     )
