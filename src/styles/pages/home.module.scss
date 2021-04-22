@@ -47,6 +47,8 @@
             }
 
             .episodeDetails {
+                width: 1%;
+
                 margin-left: 1rem;
 
                 flex: 1;
@@ -225,6 +227,17 @@
                     background-color: var(--background);
                 }
             }
+        }
+    }
+}
+
+
+
+@media (max-width: 1220px) {
+    .latestEpisodes {
+        ul {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr);
         }
     }
 }
