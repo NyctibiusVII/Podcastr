@@ -54,7 +54,7 @@ Projeto desenvolvido para gerenciar seus podcasts. Projeto realizado na Next Lev
 * *(error 2)* - Scroll lateral, componentes transbordando.
 
 <details>
-    <summary>Fixed <i>error 1<i>:</summary>
+    <summary>Fixed <i>error 1</i>:</summary>
 
 ```scss
     /* add width: 1%; inside .episodeDetails */
@@ -71,7 +71,7 @@ Projeto desenvolvido para gerenciar seus podcasts. Projeto realizado na Next Lev
 </details>
 
 <details>
-    <summary>Fixed <i>error 2<i>:</summary>
+    <summary>Fixed <i>error 2</i>:</summary>
 
 ```scss
     /* Config. for Notebooks with small screen */
