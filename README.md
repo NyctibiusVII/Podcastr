@@ -57,15 +57,15 @@ Projeto desenvolvido para gerenciar seus podcasts. Projeto realizado na Next Lev
     <summary>Fixed <i>error 1</i>:</summary>
 
 ```scss
-    /* add width: 1%; inside .episodeDetails */
+    /* Adicione 'width: 1%;' dentro de '.episodeDetails {}' */
     .episodeDetails {
-        width: 1%; /* new line */
+        width: 1%; /* NOVA LINHA */
         margin-left: 1rem;
         flex: 1;
 
-        a {...}
-        p {...}
-        span {...}
+        a {/*...*/}
+        p {/*...*/}
+        span {/*...*/}
     } /* - home.module.scss */
 ```
 </details>
@@ -81,6 +81,13 @@ Projeto desenvolvido para gerenciar seus podcasts. Projeto realizado na Next Lev
         }
     } /* - global.scss */
 
+    /**
+     * Você pode editar o valor da 'max-width'
+     * caso não sirva totalmente para o seu caso,
+     * assim como criar outras media queries para
+     * outros tamanhos de tela se preferir.
+     */
+
     /* --------------------------------------- */
 
     /* Config. for Tablet & Mobile */
@@ -92,6 +99,12 @@ Projeto desenvolvido para gerenciar seus podcasts. Projeto realizado na Next Lev
             }
         }
     } /* - home.module.scss */
+    /**
+     * Esta configuração faz com que telas que
+     * tenham uma largura menor que 1220px, as
+     * ul's se adaptem e quebrem de linha,
+     * ocupando assim uma coluna e duas linhas.
+     */
 ```
 </details>
 
