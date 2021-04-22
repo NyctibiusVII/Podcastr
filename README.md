@@ -47,6 +47,54 @@ Projeto desenvolvido para gerenciar seus podcasts. Projeto realizado na Next Lev
 * ❌ Modal Cookies consent
 * ❌ Site responsivo.
 
+<br>
+
+#### Erros de layout da NLW#5 🚧 ⇄ Consertos 🛠⚙
+* *(error 1)* - Img diminuída ou nem aparecendo no 'card' **.latestEpisodes ul li**.
+* *(error 2)* - Scroll lateral, componentes transbordando.
+
+<details>
+    <summary>Fixed <i>error 1<i>:</summary>
+
+```scss
+    /* add width: 1%; inside .episodeDetails */
+    .episodeDetails {
+        width: 1%; /* new line */
+        margin-left: 1rem;
+        flex: 1;
+
+        a {...}
+        p {...}
+        span {...}
+    } /* - home.module.scss */
+```
+</details>
+
+<details>
+    <summary>Fixed <i>error 2<i>:</summary>
+
+```scss
+    /* Config. for Notebooks with small screen */
+    @media (max-width: 1366px) {
+        html {
+            font-size: 80%;
+        }
+    } /* - global.scss */
+
+    /* --------------------------------------- */
+
+    /* Config. for Tablet & Mobile */
+    @media (max-width: 1220px) {
+        .latestEpisodes {
+            ul {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(2, 1fr);
+            }
+        }
+    } /* - home.module.scss */
+```
+</details>
+
 ## Tecnologias 🚀
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Html | 5](https://pt.wikipedia.org/wiki/HTML)
