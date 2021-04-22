@@ -1,3 +1,5 @@
+import { PlayerProvider } from '../contexts/PlayerContext'
+
 import { Header } from '../components/Header'
 import { Player } from '../components/Player'
 
@@ -6,12 +8,14 @@ import '../styles/global.scss'
 
 export default function MyApp({ Component, pageProps }) {
     return (
-        <div className={styles.wrapper}>
-            <main>
-                <Header />
-                <Component {...pageProps} />
-            </main>
-            <Player />
-        </div>
+        <PlayerProvider>
+            <div className={styles.wrapper}>
+                <main>
+                    <Header />
+                    <Component {...pageProps} />
+                </main>
+                <Player />
+            </div>
+        </PlayerProvider>
     )
 }

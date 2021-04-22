@@ -90,8 +90,24 @@ export default function Episodes({ episode }: EpisodesProps) {
     )
 }
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
+    const { data } = await api.get('episodes', {
+        params: {
+            _limit: 2,
+            _sort: 'published_at',
+            _order: 'desc',
+        }
+    })
+
+    const paths = data.map((episode: { id: string }) => {
+        return {
+            params: {
+                id: episode.id
+            }
+        }
+    })
+
     return {
-        paths: [],
+        paths,
         fallback: 'blocking'
     }
 }

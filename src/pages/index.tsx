@@ -1,7 +1,10 @@
+import { PlayerContext } from '../contexts/PlayerContext'
+
+import { useContext }                  from 'react'
 import { GetStaticProps }              from 'next'
 import { api }                         from '../services/api'
 import { format, parseISO }            from 'date-fns'
-import ptBR                            from 'date-fns/locale/pt-BR'
+import   ptBR                          from 'date-fns/locale/pt-BR'
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString'
 
 import Head   from 'next/head'
@@ -18,6 +21,7 @@ type Episodes = {
     //description: string,
     url: string,
     type: string,
+    duration: number,
     durationAsString: String
 }
 type HomeProps = {
@@ -28,6 +32,8 @@ type HomeProps = {
 }
 
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
+    const { play } = useContext(PlayerContext)
+
     const imgSize = 20
     const playCardLoader = () => `/icons/play-card.svg`
 
@@ -61,7 +67,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                                     <span>{episode.durationAsString}</span>
                                 </div>
 
-                                <button type="button">
+                                <button type="button" onClick={() => play(episode)}>
                                     <Image
                                         loader={playCardLoader}
                                         src={`
@@ -172,6 +178,7 @@ export const getStaticProps: GetStaticProps = async () => {
             //description: episode.description,
             url: episode.file.url,
             type: episode.file.type,
+            duration: Number(episode.file.duration),
             durationAsString: convertDurationToTimeString(Number(episode.file.duration)),
         }
     })

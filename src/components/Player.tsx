@@ -1,12 +1,42 @@
+import { PlayerContext } from '../contexts/PlayerContext'
+
+import {
+    useContext,
+    useEffect,
+    useRef
+} from 'react'
+
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
+
 import Image  from 'next/image'
 import styles from '../styles/components/Player.module.scss'
 
 export function Player() {
+    const audioRef = useRef<HTMLAudioElement>(null)
+
+    const {
+        episodeList,
+        currentEpisodeIndex,
+        isPlaying,
+        togglePlay,
+        setIsPlayingState
+    } = useContext(PlayerContext)
+
+    useEffect(() => {
+        if (!audioRef.current) { return }
+
+        isPlaying ? audioRef.current.play() : audioRef.current.pause()
+    }, [ isPlaying ])
+
+    const episode = episodeList[currentEpisodeIndex]
+
     const imgSize = 32
     const playingLoader      = () => `/icons/playing.svg`
     const shuffleLoader      = () => `/icons/shuffle.svg`
     const playPreviousLoader = () => `/icons/play-previous.svg`
     const playLoader         = () => `/icons/play.svg`
+    const pauseLoader        = () => `/icons/pause.svg`
     const playNextLoader     = () => `/icons/play-next.svg`
     const repeatLoader       = () => `/icons/repeat.svg`
 
@@ -28,21 +58,54 @@ export function Player() {
                 <strong>Tocando agora</strong>
             </header>
 
-            <div className={styles.emptyPlayer}>
-                <strong>Selecione um podcast para ouvir</strong>
-            </div>
+            { episode ? (
+                <div className={styles.currentEpisode}>
+                    <Image
+                        src={episode.thumbnail}
+                        objectFit='cover'
+                        alt={episode.title}
+                        width={592}
+                        height={592}
+                    />
+                    <strong>{episode.title}</strong>
+                    <span>{episode.members}</span>
+                </div>
+            ) : (
+                <div className={styles.emptyPlayer}>
+                    <strong>Selecione um podcast para ouvir</strong>
+                </div>
+            ) }
 
-            <footer className={styles.empty}>
+
+            <footer className={!episode ? styles.empty : ''}>
                 <div className={styles.progress}>
                     <span>00:00</span>
                     <div className={styles.slider}>
-                        <div className={styles.emptySlider} />
+                        { episode ? (
+                            <Slider
+                                trackStyle= {{ backgroundColor: 'var(--green)' }}
+                                railStyle=  {{ backgroundColor: 'var(--purple-light)' }}
+                                handleStyle={{ borderWidth: 4, borderColor: 'var(--green)' }}
+                            />
+                        ) : (
+                            <div className={styles.emptySlider} />
+                        ) }
                     </div>
                     <span>00:00</span>
                 </div>
 
+                { episode && (
+                    <audio
+                        src={episode.url}
+                        ref={audioRef}
+                        autoPlay
+                        onPlay={() => setIsPlayingState(true)}
+                        onPause={() => setIsPlayingState(false)}
+                    />
+                ) }
+
                 <div className={styles.playControls}>
-                    <button type="button" className={styles.shuffle} title='Embaralhar'>
+                    <button type="button" className={styles.shuffle} title='Embaralhar' disabled={!episode}>
                         <Image
                             loader={shuffleLoader}
                             src={`
@@ -59,7 +122,7 @@ export function Player() {
                             height={imgSize}
                         />
                     </button>
-                    <button type="button" className={styles.playPrevious} title='Reproduzir anterior'>
+                    <button type="button" className={styles.playPrevious} title='Reproduzir anterior' disabled={!episode}>
                         <Image
                             loader={playPreviousLoader}
                             src={`
@@ -73,20 +136,34 @@ export function Player() {
                             height={imgSize}
                         />
                     </button>
-                    <button type="button" className={styles.play} title='Reproduzir atual'>
-                        <Image
-                            loader={playLoader}
-                            src={`
-                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12.2034 7.6447C11.5377 7.22106 10.6665 7.69927 10.6665 8.48836V23.5117C10.6665 24.3008 11.5377 24.779 12.2034 24.3553L24.0074 16.8437C24.6249 16.4507 24.6249 15.5493 24.0074 15.1564L12.2034 7.6447Z" fill="white"/>
-                                </svg>
-                            `}
-                            alt="Reproduzir atual"
-                            width={imgSize}
-                            height={imgSize}
-                        />
+                    <button type="button" className={styles.play} onClick={togglePlay} title='Reproduzir atual' disabled={!episode}>
+                        { isPlaying ? (
+                            <Image
+                                loader={pauseLoader}
+                                src={`
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+                                        <path fill="#fff" fill-rule="evenodd" d="M11.5 6C10.6716 6 10 6.67157 10 7.5V23.5C10 24.3284 10.6716 25 11.5 25C12.3284 25 13 24.3284 13 23.5V7.5C13 6.67157 12.3284 6 11.5 6ZM19.5 6C18.6716 6 18 6.67157 18 7.5V23.5C18 24.3284 18.6716 25 19.5 25C20.3284 25 21 24.3284 21 23.5V7.5C21 6.67157 20.3284 6 19.5 6Z" clip-rule="evenodd"/>
+                                    </svg>
+                                `}
+                                alt="Pausar"
+                                width={imgSize}
+                                height={imgSize}
+                            />
+                        ) : (
+                            <Image
+                                loader={playLoader}
+                                src={`
+                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.2034 7.6447C11.5377 7.22106 10.6665 7.69927 10.6665 8.48836V23.5117C10.6665 24.3008 11.5377 24.779 12.2034 24.3553L24.0074 16.8437C24.6249 16.4507 24.6249 15.5493 24.0074 15.1564L12.2034 7.6447Z" fill="white"/>
+                                    </svg>
+                                `}
+                                alt="Reproduzir atual"
+                                width={imgSize}
+                                height={imgSize}
+                            />
+                        ) }
                     </button>
-                    <button type="button" className={styles.playNext} title='Ir para a próxima'>
+                    <button type="button" className={styles.playNext} title='Ir para a próxima' disabled={!episode}>
                         <Image
                             loader={playNextLoader}
                             src={`
@@ -100,7 +177,7 @@ export function Player() {
                             height={imgSize}
                         />
                     </button>
-                    <button type="button" className={styles.repeat} title='Repetir'>
+                    <button type="button" className={styles.repeat} title='Repetir' disabled={!episode}>
                         <Image
                             loader={repeatLoader}
                             src={`

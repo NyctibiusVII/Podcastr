@@ -57,7 +57,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [NodeJS | ^14.16.1](https://nodejs.org/en/)
 
 ## Layout 🚧
-## Desktop Screenshot
+### Desktop Screenshot
 <div style="display: flex; flex-direction: 'column'; align-items: 'center';">
 <!-- Responsive, 1440 x 900, 50% (Laptop L - 1440px)-->
     <img width="400px" src="./.github/desktop/home-without-podcast.png">
@@ -66,7 +66,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 </div>
 <a href="./.github/README-IMGS.md">Ver mais</a>
 
-## Mobile Screenshot
+### Mobile Screenshot
 <div style="display: flex; flex-direction: 'row';">
 <!-- Responsive, 425 x 900, 60% (Mobile L - 425px)-->
     Em breve...
@@ -97,6 +97,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
         "axios": "^0.21.1",
         "date-fns": "^2.21.1",
         "next": "10.1.3",
+        "rc-slider": "^9.7.2",
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "sass": "^1.32.11"
@@ -138,7 +139,7 @@ Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://disc
 | Dia 1 | #MissaoEspacial        |
 | Dia 2 | #EmBuscaDoPróximoNível |
 | Dia 3 | #Astronautas           |
-| Dia 4 | # |
+| Dia 4 | #UniversoInfinito      |
 | Dia 5 | # |
 
 ## Licença ⚖️
