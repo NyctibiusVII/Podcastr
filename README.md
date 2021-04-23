@@ -224,7 +224,7 @@ Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://disc
 ### Hashtags \#
 | Dias  | Hashtags               |
 |-------|------------------------|
-| Dia 1 | #MissaoEspacial        |
+| Dia 1 | #MissãoEspacial        |
 | Dia 2 | #EmBuscaDoPróximoNível |
 | Dia 3 | #Astronautas           |
 | Dia 4 | #UniversoInfinito      |
