@@ -47,6 +47,33 @@ Projeto desenvolvido para gerenciar seus podcasts. Projeto realizado na Next Lev
 * ❌ Modal Cookies consent
 * ❌ Site responsivo.
 
+<details>
+    <summary>Desafios</summary>
+
+```
+✔ - Documentar bem o projeto
+✖ - Melhorar o estilo: Responsividade e Design
+✖ - Banco de dados
+✖ - Next PWA
+
+Funcionalidades:
+    - Trocar o tema da aplicação: Light e Dark
+    ✖ - COOKIES:
+        - Cookies consent
+        - Guardar dados
+        - Alterar dados
+        - Deletar dados
+    ✖ - SQL:
+        - Guardar dados
+        - Alterar dados
+        - Deletar dados
+    - Telas:
+        ✔ - Home
+        ✔ - Episodes
+        - 404
+```
+</details>
+
 <br>
 
 #### Erros de layout da NLW#5 🚧 ⇄ Consertos 🛠⚙
@@ -201,7 +228,7 @@ Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://disc
 | Dia 2 | #EmBuscaDoPróximoNível |
 | Dia 3 | #Astronautas           |
 | Dia 4 | #UniversoInfinito      |
-| Dia 5 | # |
+| Dia 5 | #MissãoCumprida        |
 
 ## Licença ⚖️
 Este projeto está sob a licença do MIT. Veja o arquivo [LICENSE](https://github.com/NyctibiusVII/Podcastr/blob/main/LICENSE) para mais detalhes.

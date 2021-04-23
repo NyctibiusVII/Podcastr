@@ -26,9 +26,7 @@
     footer {
         align-self: stretch;
 
-        &.empty {
-            opacity: 0.5;
-        }
+        &.empty .progress { opacity: 0.5; }
     }
 }
 
@@ -147,9 +145,18 @@
         -ms-border-radius: 50%;
         -o-border-radius: 50%;
 
-        &:disabled { cursor: default; }
+        &:disabled { cursor: default; opacity: 0.5;}
 
         &:hover:not(:disabled) { background-color: var(--purple-low-dark); }
+
+        &.isActive {
+            filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+            -webkit-filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+        }
+        &.isActive:hover {
+            filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+            -webkit-filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+        }
 
         &.play {
             width: 4rem;

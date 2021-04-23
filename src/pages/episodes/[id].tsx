@@ -1,8 +1,9 @@
+import { usePlayer } from '../../contexts/PlayerContext'
+
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { api }                            from '../../services/api'
 import { format, parseISO }               from 'date-fns'
 import ptBR                               from 'date-fns/locale/pt-BR'
-import { useRouter }                      from 'next/router'
 import { convertDurationToTimeString }    from '../../utils/convertDurationToTimeString'
 
 import Head   from 'next/head'
@@ -11,14 +12,15 @@ import Image  from 'next/image'
 import styles from '../../styles/pages/episode.module.scss'
 
 type Episodes = {
-    id: string,
-    title: string,
-    members: string,
-    publishedAt: string,
-    thumbnail: string,
-    description: string,
-    url: string,
-    type: string,
+    id:               string,
+    title:            string,
+    members:          string,
+    publishedAt:      string,
+    thumbnail:        string,
+    description:      string,
+    url:              string,
+    type:             string,
+    duration:         number,
     durationAsString: String
 }
 type EpisodesProps = {
@@ -26,7 +28,7 @@ type EpisodesProps = {
 }
 
 export default function Episodes({ episode }: EpisodesProps) {
-    const router = useRouter()
+    const { play } = usePlayer()
 
     const imgSize = 24
     const arrowBackLoader = () => `/icons/arrow-back.svg`
@@ -35,11 +37,11 @@ export default function Episodes({ episode }: EpisodesProps) {
     return (
         <div className={styles.container}>
             <Head>
-                <title>{episode.title}</title>
+                <title>{episode.title} | Podcastr</title>
             </Head>
             <div className={styles.thumbnailContainer}>
                 <Link href={'/'}>
-                    <button type="button" >
+                    <button type="button" title='Voltar'>
                         <Image
                             loader={arrowBackLoader}
                             src={`
@@ -60,7 +62,7 @@ export default function Episodes({ episode }: EpisodesProps) {
                     width={700}
                     height={160}
                 />
-                <button type="button">
+                <button type="button" title='Reproduzir podcast' onClick={() => play(episode)}>
                     <Image
                         loader={playLoader}
                         src={`
@@ -124,6 +126,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
         description: data.description,
         url: data.file.url,
         type: data.file.type,
+        duration: data.file.duration,
         durationAsString: convertDurationToTimeString(Number(data.file.duration)),
     }
 

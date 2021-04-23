@@ -1,6 +1,5 @@
-import { PlayerContext } from '../contexts/PlayerContext'
+import { usePlayer } from '../contexts/PlayerContext'
 
-import { useContext }                  from 'react'
 import { GetStaticProps }              from 'next'
 import { api }                         from '../services/api'
 import { format, parseISO }            from 'date-fns'
@@ -32,7 +31,9 @@ type HomeProps = {
 }
 
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
-    const { play } = useContext(PlayerContext)
+    const { playList } = usePlayer()
+
+    const episodeList = [...latestEpisodes, ...allEpisodes]
 
     const imgSize = 20
     const playCardLoader = () => `/icons/play-card.svg`
@@ -40,14 +41,14 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
     return (
         <div className={styles.container}>
             <Head>
-                <title>Podcastr</title>
+                <title>Home | Podcastr</title>
             </Head>
 
             <section className={styles.latestEpisodes}>
                 <h2>Últimos lançamentos</h2>
 
                 <ul>
-                    {latestEpisodes.map(episode => {
+                    { latestEpisodes.map((episode, index) => {
                         return (
                             <li key={episode.id}>
                                 <Image
@@ -67,7 +68,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                                     <span>{episode.durationAsString}</span>
                                 </div>
 
-                                <button type="button" onClick={() => play(episode)}>
+                                <button type="button" onClick={() => playList(episodeList, index)}>
                                     <Image
                                         loader={playCardLoader}
                                         src={`
@@ -82,7 +83,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                                 </button>
                             </li>
                         )
-                    })}
+                    }) }
                 </ul>
             </section>
             <section className={styles.allEpisodes}>
@@ -100,7 +101,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                         </tr>
                     </thead>
                     <tbody>
-                        {allEpisodes.map(episode => {
+                        { allEpisodes.map((episode, index) => {
                             return (
                                 <tr key={episode.id}>
                                     <td style={{ width: 70 }}>
@@ -121,7 +122,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                                     <td style={{ width: 90 }}>{episode.publishedAt}</td>
                                     <td>{episode.durationAsString}</td>
                                     <td>
-                                        <button type="button">
+                                    <button type="button" onClick={() => playList(episodeList, (index + latestEpisodes.length))}>
                                             <Image
                                                 loader={playCardLoader}
                                                 src={`
@@ -137,7 +138,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                                     </td>
                                 </tr>
                             )
-                        })}
+                        }) }
                     </tbody>
                 </table>
             </section>
