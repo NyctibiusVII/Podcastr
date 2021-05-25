@@ -96,16 +96,12 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
         params: {
             _limit: 2,
             _sort: 'published_at',
-            _order: 'desc',
+            _order: 'desc'
         }
     })
 
     const paths = data.map((episode: { id: string }) => {
-        return {
-            params: {
-                id: episode.id
-            }
-        }
+        return { params: { id: episode.id } }
     })
 
     return {
@@ -115,25 +111,29 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 }
 export const getStaticProps: GetStaticProps = async (ctx) => {
     const { id } = ctx.params
-    const { data } = await api.get(`/episodes/${id}`)
+
+    const { data } = await api.get('episodes', {
+        params: {
+            w: 'id',
+            wr: `${id}`
+        }
+    })
 
     const episode = {
-        id: data.id,
-        title: data.title,
-        members: data.members,
+        id:          data.id,
+        title:       data.title,
+        members:     data.members,
         publishedAt: format(parseISO(data.published_at), 'd MMM yy', { locale: ptBR }),
-        thumbnail: data.thumbnail,
+        thumbnail:   data.thumbnail,
         description: data.description,
-        url: data.file.url,
-        type: data.file.type,
-        duration: data.file.duration,
-        durationAsString: convertDurationToTimeString(Number(data.file.duration)),
+        url:         data.url,
+        type:        data.type,
+        duration:    data.duration,
+        durationAsString: convertDurationToTimeString(Number(data.duration)),
     }
 
     return {
-        props: {
-            episode
-        },
+        props: { episode },
         revalidate: 60 * 60 * 24 // - 24h
     }
 }

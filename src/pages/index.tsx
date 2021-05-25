@@ -12,22 +12,22 @@ import Image  from 'next/image'
 import styles from '../styles/pages/home.module.scss'
 
 type Episodes = {
-    id: string,
-    title: string,
-    members: string,
-    publishedAt: string,
-    thumbnail: string,
-    //description: string,
-    url: string,
-    type: string,
-    duration: number,
+    id:               string,
+    title:            string,
+    members:          string,
+    publishedAt:      string,
+    thumbnail:        string,
+    //description:      string,
+    url:              string,
+    type:             string,
+    duration:         number,
     durationAsString: String
 }
 type HomeProps = {
     //episodes: Array<Episodes>
     //episodes: Episodes[]
     latestEpisodes: Episodes[]
-    allEpisodes: Episodes[]
+    allEpisodes:    Episodes[]
 }
 
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
@@ -147,40 +147,32 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const { data } = await api.get('episodes', {
-        params: {
-            _limit: 12,
-            _sort: 'published_at',
-            _order: 'desc',
-        }
-    })
+    const { data } = await api.get('episodes')
 
     type PureEpisodes = {
-        id: string,
-        title: string,
-        members: string,
+        id:           string,
+        title:        string,
+        members:      string,
         published_at: string,
-        thumbnail: string,
-        description: string,
-        file: {
-            url: string,
-            type: string,
-            duration: Number
-        }
+        thumbnail:    string,
+        description:  string,
+        url:          string,
+        type:         string,
+        duration:     number
     }
 
     const episodes = data.map((episode: PureEpisodes) => {
         return {
-            id: episode.id,
-            title: episode.title,
-            members: episode.members,
+            id:          episode.id,
+            title:       episode.title,
+            members:     episode.members,
             publishedAt: format(parseISO(episode.published_at), 'd MMM yy', { locale: ptBR }),
-            thumbnail: episode.thumbnail,
+            thumbnail:   episode.thumbnail,
             //description: episode.description,
-            url: episode.file.url,
-            type: episode.file.type,
-            duration: Number(episode.file.duration),
-            durationAsString: convertDurationToTimeString(Number(episode.file.duration)),
+            url:         episode.url,
+            type:        episode.type,
+            duration:    Number(episode.duration),
+            durationAsString: convertDurationToTimeString(Number(episode.duration)),
         }
     })
 
@@ -196,10 +188,11 @@ export const getStaticProps: GetStaticProps = async () => {
         revalidate: 60 * 60 * 8, // - 8h
     }
 }
+
 /**
- *  get = pegar dados
- *  post = salvar dados
- *  put = atualizar dados
- *  patch = atualizar dados
- *  delete = deletar dados
+ *  get    = pegar     dados
+ *  post   = salvar    dados
+ *  put    = atualizar dados
+ *  patch  = atualizar dados
+ *  delete = deletar   dados
  */
